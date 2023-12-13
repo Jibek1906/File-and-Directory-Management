@@ -173,25 +173,24 @@ namespace File_and_Directory_Managment
 
             try
             {
-                string[] matchingEntries;
+                string[] matchingFiles;
 
                 if (!string.IsNullOrEmpty(searchPattern))
                 {
-                    matchingEntries = Directory.GetFileSystemEntries(Environment.CurrentDirectory, searchPattern);
+                    matchingFiles = Directory.GetFiles(Environment.CurrentDirectory, searchPattern);
                 }
                 else
                 {
-                    matchingEntries = Directory.GetFileSystemEntries(Environment.CurrentDirectory);
+                    matchingFiles = Directory.GetFileSystemEntries(Environment.CurrentDirectory);
                 }
 
-                RefreshFileList(matchingEntries);
+                RefreshFileList(matchingFiles);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error searching: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
 
         private string GetSelectedPath()
